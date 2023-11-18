@@ -20,8 +20,8 @@ def gen_link(loc):
 
 def gen_data(link):
     try:         
-        panda = pd.read_csv(urllib.request.urlopen(link))       # parse api return into pandas data format       
-    except urllib.error.HTTPError  as e:                         # check for errors in url fetch
+        forecast = pd.read_csv(urllib.request.urlopen(link))       # parse api return into forecasts data format       
+    except urllib.error.HTTPError as e:                         # check for errors in url fetch
         ErrorInfo= e.read().decode() 
         st.write('Error code: ', e.code, ErrorInfo)
         sys.exit()
@@ -30,11 +30,15 @@ def gen_data(link):
         st.write('Error code: ', e.code,ErrorInfo)
         sys.exit()
 
-    st.write('Solar energy production data for ' + '**' + panda['name'][1]+ '**' + ':')     # write city name at top of page
-    csvt = panda.loc[:,'datetime':]                                                         # TODO - remove later
-    st.write(csvt)
+    st.write('Solar energy production data for ' + '**' + forecast['name'][1]+ '**' + ':')     # write city name at top of page
+    st.write(forecast.loc[:,'datetime':])
+    return forecast
+
+def graph():
+    st.area_chart(forecast, x='datetime', y='temp')
 
 loc = st.text_input('Location')         # get location from user
 if loc != '':
     link = gen_link(loc)
-    gen_data(link)
+    forecast = gen_data(link)
+    graph()
