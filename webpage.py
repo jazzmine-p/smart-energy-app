@@ -7,7 +7,7 @@ with open('apikey.txt', 'r') as file:
     apikey = file.read().rstrip()
 
 apilink1 = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
-apilink2 = "?unitGroup=metric&include=days&key=" + apikey + "&contentType=csv"
+apilink2 = "?unitGroup=metric&elements=datetime%2Ctemp%2Cdew%2Chumidity%2Cwindspeed%2Ccloudcover%2Cvisibility%2Csolarenergy&include=days%2Cstats%2Cstatsfcst%2Cremote%2Cobs%2Cfcst&key=" + apikey + "&contentType=csv"
 
 loc = st.text_input('Location')
 loc = loc.replace(' ', '%20')
