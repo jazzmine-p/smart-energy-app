@@ -16,11 +16,11 @@ Renewable energy sources like solar and wind power are highly dependent on weath
 ## Impacts
 What impacts can predicting solar energy production have?
 1. Environmental Impacts
-        - Green energy production is environmentally friendly. However, if we don’t maximize our use of green energy, we could be needlessly relying on fossil fuel when it is unnecessary. Accurate predictions allow us to improve the efficiency of green energy  by having better management of energy resources and reducing the need for backup fossil fuel plants.
+   - Green energy production is environmentally friendly. However, if we don’t maximize our use of green energy, we could be needlessly relying on fossil fuel when it is unnecessary. Accurate predictions allow us to improve the efficiency of green energy  by having better management of energy resources and reducing the need for backup fossil fuel plants.
 2. Financial Impacts
-        - Accurate predictions of green energy production enable grid operators to balance the supply and demand of electricity. This helps prevent blackouts and brownouts by ensuring that enough energy is available when needed. The prevention of blackouts and brownouts protects businesses from losing financial gains from either having to alter their hours of operation or losing server data.
-        - Energy companies and investors need to make long-term decisions about infrastructure investments in renewable energy projects. Accurate predictions of green energy production help assess the viability and profitability of such projects.
-        - Accurate predictions help energy providers avoid overcommitting or underutilizing resources. This can lead to cost savings by reducing the need for expensive peaker plants and minimizing energy wastage during periods of oversupply.
+   - Accurate predictions of green energy production enable grid operators to balance the supply and demand of electricity. This helps prevent blackouts and brownouts by ensuring that enough energy is available when needed. The prevention of blackouts and brownouts protects businesses from losing financial gains from either having to alter their hours of operation or losing server data.
+    - Energy companies and investors need to make long-term decisions about infrastructure investments in renewable energy projects. Accurate predictions of green energy production help assess the viability and profitability of such projects.
+    - Accurate predictions help energy providers avoid overcommitting or underutilizing resources. This can lead to cost savings by reducing the need for expensive peaker plants and minimizing energy wastage during periods of oversupply.
 3. Impact on Policies and Regulation
-        - Governments and regulatory bodies use production forecasts to develop policies and regulations that promote the growth of renewable energy. Predictions provide essential data for setting renewable energy targets, incentivizing investments, and monitoring progress.
+   - Governments and regulatory bodies use production forecasts to develop policies and regulations that promote the growth of renewable energy. Predictions provide essential data for setting renewable energy targets, incentivizing investments, and monitoring progress.
 
