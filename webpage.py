@@ -6,7 +6,6 @@ import urllib.request
 import sys
 
 st.title('page title') # TODO
-forecast = None
 
 def gen_link(loc):
     with open('apikey.txt', 'r') as file:   # get api key
