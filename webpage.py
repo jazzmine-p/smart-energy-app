@@ -22,7 +22,7 @@ def gen_link(loc):
 def gen_data(link):
     try:         
         forecast = pd.read_csv(urllib.request.urlopen(link))       # parse api return into forecasts data format       
-    except urllib.error.HTTPError  as e:                         # check for errors in url fetch
+    except urllib.error.HTTPError as e:                         # check for errors in url fetch
         ErrorInfo= e.read().decode() 
         st.write('Error code: ', e.code, ErrorInfo)
         sys.exit()
