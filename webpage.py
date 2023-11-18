@@ -5,8 +5,12 @@ import numpy as np
 import urllib.request
 import sys
 
+import pandas as pd
 from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.ensemble import AdaBoostRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.ensemble import AdaBoostRegressor, RandomForestRegressor
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -42,31 +46,62 @@ def gen_data(link):
     return forecast
 
 def graph():
-    st.area_chart(forecast, x='datetime', y='solar output')
+    st.area_chart(forecast, x='datetime', y='solar output (kw/hr)')
 
 def predict(vs_test):
-    d = {'solar output': []}
     
+    df = pd.read_csv("joined-weather-solar.csv")
+    df['Date'] = pd.to_datetime(df['Date'])
+    df['year'] = df['Date'].dt.year
+    df['month'] = df['Date'].dt.month
+    df['day'] = df['Date'].dt.month
+    df = df.drop(columns=['Date','Station pressure', 'Unnamed: 0', 'Altimeter'])
+    df = df.rename(columns={'Temperature':'temp',
+                            'Dew point':'dew',
+                            'Wind speed':'windspeed',
+                            'Cloud coverage': 'cloudcover',
+                            'Visibility': 'visibility',
+                            'Solar energy': 'solarenergy',
+                            'Relative humidity':'humidity'})
+    X = df.drop(columns=['Site Performance Estimate'], axis=1)
+    y = df['Site Performance Estimate']
+
+    # Splitting the dfset into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Normalizing the df
+    scaler = MinMaxScaler(feature_range=(0, 1))
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    vs_test_df = vs_test
+
+    # Preprocess the data
     vs_test['datetime'] = pd.to_datetime(vs_test['datetime'])
     vs_test['year'] = vs_test['datetime'].dt.year
     vs_test['month'] = vs_test['datetime'].dt.month
+    vs_test['day'] = vs_test['datetime'].dt.day
     vs_test = vs_test.drop(columns=['datetime', 'name'])
 
-    final_ada = AdaBoostRegressor(base_estimator=None, 
-                            learning_rate=0.5, 
-                            n_estimators=150,
-                            random_state=42)
-    
-    vs_pred = final_ada.predict(vs_test)
-    st.write(vs_pred)
-    
-    d['solar output'] += [2]
-    d['solar output'] += [3]
-    d['solar output'] += [4]
-    vs_test = vs_test.join(pd.DataFrame(data=d))
-    # st.write(vs_test.loc[:, ['datetime', 'temp', 'cloudcover', 'visibility', 'solar output']], use_container_width=True)
+    # Reorder column and MinMaxScaler
+    vs_test = vs_test[['cloudcover', 'visibility', 'temp', 'dew', 'humidity', 'windspeed',
+        'solarenergy', 'year', 'month', 'day']]
+    vs_test = scaler.transform(vs_test)
 
-    return vs_test
+    # Predict using AdaBoosting
+    final_ada = AdaBoostRegressor(base_estimator=None, 
+                                learning_rate=0.5, 
+                                n_estimators=150,
+                                random_state=42)
+    result = final_ada.fit(X_train, y_train)
+
+    # Final prediction
+    vs_pred = result.predict(vs_test)
+
+    vs_test_df = vs_test_df.join(pd.DataFrame(data=vs_pred, columns=['solar output (kw/hr)']))
+    st.write(vs_test_df.loc[:, ['datetime', 'temp', 'cloudcover', 'visibility', 'solar output (kw/hr)']], use_container_width=True)
+
+    return vs_test_df
   
 
 loc = st.text_input('Location')         # get location from user
