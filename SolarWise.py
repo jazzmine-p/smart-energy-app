@@ -14,7 +14,7 @@ from sklearn.ensemble import AdaBoostRegressor, RandomForestRegressor
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-st.title('page title') # TODO
+st.title('SolarWise Energy Forecast') # TODO
 
 forecast = []
 
@@ -47,6 +47,10 @@ def gen_data(link):
 
 def graph():
     st.area_chart(forecast, x='datetime', y='solar output (kw/hr)')
+    st.area_chart(forecast, x='datetime', y='temp')
+    st.area_chart(forecast, x='datetime', y='cloudcover')
+    st.area_chart(forecast, x='datetime', y='visibility')
+    st.area_chart(forecast, x='datetime', y='solarenergy')
 
 def predict(vs_test):
     
