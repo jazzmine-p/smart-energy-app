@@ -6,6 +6,7 @@ import urllib.request
 import sys
 
 st.title('page title') # TODO
+panda = None
 
 def gen_link(loc):
     with open('apikey.txt', 'r') as file:   # get api key
@@ -31,10 +32,14 @@ def gen_data(link):
         sys.exit()
 
     st.write('Solar energy production data for ' + '**' + panda['name'][1]+ '**' + ':')     # write city name at top of page
-    csvt = panda.loc[:,'datetime':]                                                         # TODO - remove later
-    st.write(csvt)
+    st.write(panda.loc[:,'datetime':])
+    return panda
+
+def graph():
+    st.area_chart(panda, x='datetime', y='temp')
 
 loc = st.text_input('Location')         # get location from user
 if loc != '':
     link = gen_link(loc)
-    gen_data(link)
+    panda = gen_data(link)
+    graph()
