@@ -1,10 +1,10 @@
 # [Project Name Here] 
-A BostonHacks 2023 project by Grace, Sarah, Jasmine, and Vijay
+A BostonHacks 2023 project by Grace Desroches, Sarah Cadet, Jasmine Pham, and Vijay Fisch
 ## Project Description
-[Project Name Here] is an AI-powered system that forecasts solar energy production based on weather conditions.  Accurate green energy forecasting can help energy grid operators efficiently manage the integration of renewable energy sources, reduce reliance on fossil fuels, and minimize energy wastage. It contributes to a more sustainable energy ecosystem and reduces greenhouse gas emissions. 
+[Project Name Here] is an machine learning powered algorithm that forecasts solar energy production based on up-to-date weather conditions.  Accurate green energy forecasting can help energy grid operators efficiently manage the integration of renewable energy sources, reduce reliance on fossil fuels, and minimize energy waste. The program could contribute to a more sustainable energy ecosystem and reduce greenhouse gas emissions. 
 
 ## What problem are we trying to solve?
-Renewable energy sources like solar and wind power are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. We aim to optimize the integration of renewable energy into the grid. To accomplish this optimization, accurate forecasting is essential. 
+Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. We aim to optimize the integration of renewable energy into the grid. To accomplish this optimization, accurate forecasting is essential. 
 ## Our Approach
 1. Data Collection
     - We gathered historical data on weather conditions and corresponding energy production data from solar energy farms
