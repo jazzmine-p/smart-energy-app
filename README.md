@@ -7,7 +7,7 @@ A BostonHacks 2023 project by Grace Desroches, Sarah Cadet, Jasmine Pham, and Vi
 Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. We aim to optimize the integration of renewable energy into the grid. To accomplish this optimization, accurate forecasting is essential. 
 ## Our Approach
 1. Data Collection
-    - We gathered historical data on weather conditions and corresponding energy production data from solar energy farms
+    - We gathered historical data on weather conditions and corresponding energy production data from solar energy farms.
 1. Data Processing & Features Engineering
     - We decided on the following relevant features from the weather data that can impact solar energy production:  cloud cover duration, visibility, dew point, humidity, windspeed, and solar energy.
 1. Prediction of Weather & Solar Energy Production
