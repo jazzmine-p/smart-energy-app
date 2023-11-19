@@ -12,8 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import AdaBoostRegressor
 from sklearn.tree import DecisionTreeRegressor
-import matplotlib.pyplot as plt
-from io import BytesIO
+
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
