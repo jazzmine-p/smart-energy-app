@@ -26,6 +26,8 @@ col2.markdown('Enter your location for a 15 day solar panel production forecast'
 forecast = []
 
 def gen_link(loc):
+    #with open('apikey.txt', 'r') as file:   # get api key
+    #    apikey = file.read().rstrip()
     apikey = st.secrets["apikey"]
 
     apilink1 = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'
@@ -48,6 +50,7 @@ def gen_data(link):
         sys.exit()
 
     st.write('Solar energy production data for ' + '**' + forecast['name'][1]+ '**' + ':')     # write city name at top of page
+    # st.write(forecast.loc[:, 'datetime':])
     return forecast
 
 def graph():
@@ -56,6 +59,10 @@ def graph():
 
 def predict(vs_test):
     df = pd.read_csv("joined-weather-solar.csv")
+    #df['Date'] = pd.to_datetime(df['Date'])
+    #df['year'] = df['Date'].dt.year
+    #df['month'] = df['Date'].dt.month
+    #df['day'] = df['Date'].dt.month
     df = df.drop(columns=['Date','Station pressure', 'Unnamed: 0', 'Altimeter'])
     df = df.rename(columns={'Temperature':'temp',
                             'Dew point':'dew',
@@ -70,15 +77,24 @@ def predict(vs_test):
     # Splitting the dfset into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=37)
 
+    # Normalizing the df
+    # scaler = MinMaxScaler(feature_range=(0, 1))
+    # X_train = scaler.fit_transform(X_train)
+    #X_test = scaler.transform(X_test)
+
     vs_test_df = vs_test
 
     # Preprocess the data
     vs_test['Date'] = pd.to_datetime(vs_test['datetime'])
+    #vs_test['year'] = vs_test['Date'].dt.year
+    #vs_test['month'] = vs_test['Date'].dt.month
+    #vs_test['day'] = vs_test['Date'].dt.day
     vs_test = vs_test.drop(columns=['Date', 'name'])
 
     # Reorder column and MinMaxScaler
     vs_test = vs_test[['cloudcover', 'visibility', 'temp', 'dew', 'humidity', 'windspeed',
         'solarenergy']]
+    # vs_test = scaler.transform(vs_test)
 
     # Predict using AdaBoosting based on DecisionTreeRegressor base tree
     base_tree = DecisionTreeRegressor(max_depth=5, random_state=37)
