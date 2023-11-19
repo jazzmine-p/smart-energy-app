@@ -26,8 +26,8 @@ col2.markdown('Enter your location for a 15 day solar panel production forecast'
 forecast = []
 
 def gen_link(loc):
-    with open('apikey.txt', 'r') as file:   # get api key
-        apikey = file.read().rstrip()
+    #with open('apikey.txt', 'r') as file:   # get api key
+    #    apikey = file.read().rstrip()
 
     apilink1 = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'
     apilink2 = '?unitGroup=metric&elements=name%2Cdatetime%2Ctemp%2Cdew%2Chumidity%2Cwindspeed%2Ccloudcover%2Cvisibility%2Csolarenergy&include=days%2Cstats%2Cstatsfcst%2Cremote%2Cobs%2Cfcst&key=' + apikey + '&contentType=csv'
