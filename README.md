@@ -1,4 +1,4 @@
-# Solar Wise Energy Forecast
+# SolarWise Energy Forecast
 A BostonHacks 2023 project by Grace Desroches, Sarah Cadet, Jasmine Pham, and Vijay Fisch
 
 ## Project Description
