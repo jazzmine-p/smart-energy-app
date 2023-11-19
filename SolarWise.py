@@ -12,7 +12,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import AdaBoostRegressor
 from sklearn.tree import DecisionTreeRegressor
-
+import matplotlib.pyplot as plt
+from io import BytesIO
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -53,7 +54,8 @@ def gen_data(link):
     return forecast
 
 def graph():
-    col2.area_chart(forecast, x='Date', y='Predicted Solar Output (kW/hr)', color=(66, 127, 19, 150))
+    col2.area_chart(forecast, x='Date', y='Predicted Solar Output (kW/hr)', color=(66, 127, 19, 150), height=562)
+
 
 def predict(vs_test):
     df = pd.read_csv("joined-weather-solar.csv")
@@ -108,7 +110,7 @@ def predict(vs_test):
     vs_pred = result.predict(vs_test)
 
     vs_test_df = vs_test_df.join(pd.DataFrame(data=vs_pred, columns=['Predicted Solar Output (kW/hr)']))
-    col1.dataframe(vs_test_df.loc[:, ['Date', 'Predicted Solar Output (kW/hr)']], use_container_width=True, hide_index=True)
+    col1.dataframe(vs_test_df.loc[:, ['Date', 'Predicted Solar Output (kW/hr)']], use_container_width=True, hide_index=True, height=562)
 
     return vs_test_df
   
