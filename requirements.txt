@@ -2,6 +2,3 @@ scikit-learn
 streamlit
 pandas
 numpy
-urllib.request
-sys
-warnings
