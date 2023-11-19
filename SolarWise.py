@@ -83,7 +83,7 @@ def predict(vs_test):
     vs_test_df = vs_test
 
     # Preprocess the data
-    #vs_test['Date'] = pd.to_datetime(vs_test['datetime'])
+    vs_test['Date'] = pd.to_datetime(vs_test['datetime'])
     #vs_test['year'] = vs_test['Date'].dt.year
     #vs_test['month'] = vs_test['Date'].dt.month
     #vs_test['day'] = vs_test['Date'].dt.day
@@ -91,15 +91,15 @@ def predict(vs_test):
 
     # Reorder column and MinMaxScaler
     vs_test = vs_test[['cloudcover', 'visibility', 'temp', 'dew', 'humidity', 'windspeed',
-        'solarenergy', 'year', 'month', 'day']]
+        'solarenergy']]
     # vs_test = scaler.transform(vs_test)
 
     # Predict using AdaBoosting based on DecisionTreeRegressor base tree
-    base_tree = DecisionTreeRegressor(max_depth=3, random_state=37)
+    base_tree = DecisionTreeRegressor(max_depth=5, random_state=37)
     base_tree.fit(X_train, y_train)
     
     final_ada = AdaBoostRegressor(base_estimator=base_tree, 
-                                learning_rate=1, 
+                                learning_rate=0.5, 
                                 n_estimators=150,
                                 random_state=37)
     result = final_ada.fit(X_train, y_train)
