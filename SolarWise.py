@@ -10,7 +10,9 @@ from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.ensemble import AdaBoostRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.ensemble import AdaBoostRegressor, RandomForestRegressor
+from sklearn.ensemble import AdaBoostRegressor
+from sklearn.tree import DecisionTreeRegressor
+
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -55,10 +57,10 @@ def graph():
 
 def predict(vs_test):
     df = pd.read_csv("joined-weather-solar.csv")
-    df['Date'] = pd.to_datetime(df['Date'])
-    df['year'] = df['Date'].dt.year
-    df['month'] = df['Date'].dt.month
-    df['day'] = df['Date'].dt.month
+    #df['Date'] = pd.to_datetime(df['Date'])
+    #df['year'] = df['Date'].dt.year
+    #df['month'] = df['Date'].dt.month
+    #df['day'] = df['Date'].dt.month
     df = df.drop(columns=['Date','Station pressure', 'Unnamed: 0', 'Altimeter'])
     df = df.rename(columns={'Temperature':'temp',
                             'Dew point':'dew',
@@ -71,7 +73,7 @@ def predict(vs_test):
     y = df['Site Performance Estimate']
 
     # Splitting the dfset into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=420)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=37)
 
     # Normalizing the df
     # scaler = MinMaxScaler(feature_range=(0, 1))
@@ -81,10 +83,10 @@ def predict(vs_test):
     vs_test_df = vs_test
 
     # Preprocess the data
-    vs_test['Date'] = pd.to_datetime(vs_test['datetime'])
-    vs_test['year'] = vs_test['Date'].dt.year
-    vs_test['month'] = vs_test['Date'].dt.month
-    vs_test['day'] = vs_test['Date'].dt.day
+    #vs_test['Date'] = pd.to_datetime(vs_test['datetime'])
+    #vs_test['year'] = vs_test['Date'].dt.year
+    #vs_test['month'] = vs_test['Date'].dt.month
+    #vs_test['day'] = vs_test['Date'].dt.day
     vs_test = vs_test.drop(columns=['Date', 'name'])
 
     # Reorder column and MinMaxScaler
@@ -92,13 +94,14 @@ def predict(vs_test):
         'solarenergy', 'year', 'month', 'day']]
     # vs_test = scaler.transform(vs_test)
 
-    # Predict using AdaBoosting
-    forestRegressor = RandomForestRegressor(n_estimators = 100, random_state = 42)
-    forestRegressor.fit(X_train, y_train)
-    final_ada = AdaBoostRegressor(base_estimator=forestRegressor, 
-                                learning_rate=5, 
+    # Predict using AdaBoosting based on DecisionTreeRegressor base tree
+    base_tree = DecisionTreeRegressor(max_depth=3, random_state=37)
+    base_tree.fit(X_train, y_train)
+    
+    final_ada = AdaBoostRegressor(base_estimator=base_tree, 
+                                learning_rate=1, 
                                 n_estimators=150,
-                                random_state=420)
+                                random_state=37)
     result = final_ada.fit(X_train, y_train)
 
     # Final prediction
