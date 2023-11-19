@@ -2,10 +2,8 @@
 A BostonHacks 2023 project by Grace Desroches, Sarah Cadet, Jasmine Pham, and Vijay Fisch
 
 ## Project Description
-Solar Wise Energy Forecast is an machine learning powered algorithm that forecasts solar energy production based on up-to-date weather conditions.  Accurate green energy forecasting can help energy grid operators efficiently manage the integration of renewable energy sources, reduce reliance on fossil fuels, and minimize energy waste. The program could contribute to a more sustainable energy ecosystem and reduce greenhouse gas emissions. 
-
-## Problem Formation
-Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. We aim to optimize the integration of renewable energy into the grid. To accomplish this optimization, accurate forecasting is essential. 
+Problem: Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. 
+Solution: Solar Wise Energy Forecast is an machine learning powered algorithm that forecasts solar energy production based on up-to-date weather conditions.  Accurate green energy forecasting can help energy grid operators efficiently manage the integration of renewable energy sources, reduce reliance on fossil fuels, and minimize energy waste. The program could contribute to a more sustainable energy ecosystem and reduce greenhouse gas emissions. 
 
 ## Our Approach
 1. Data Collection
@@ -27,25 +25,22 @@ Renewable energy sources like solar panels are highly dependent on weather condi
       
 ## Impacts
 What impacts can predicting solar energy production have?
-1. Environmental Impacts
+1. Environment & Sustainability
    - Green energy production is environmentally friendly. However, if we don’t maximize our use of green energy, we could be needlessly relying on fossil fuel when it is unnecessary. Accurate predictions allow us to improve the efficiency of green energy  by having better management of energy resources and reducing the need for backup fossil fuel plants.
    - Carbon Emission Reduction: By enabling users to forecast solar energy production, this project empowers individuals and organizations to reduce their reliance on traditional, fossil fuel-based energy sources. As a result, it directly contributes to carbon emission reduction efforts.
    - Climate Justice: By providing accurate solar energy forecasts, we empower Boston's diverse communities to make informed decisions about their energy consumption. This not only reduces their reliance on fossil fuels but also contributes to a more equitable and sustainable energy landscape.
    - Climate Resilience: The integration of GraphCast's advanced weather predictions, although currently beyond our technical scope, holds immense potential for early warnings of extreme weather events. This capability directly contributes to Boston's climate resilience efforts, safeguarding communities from the impacts of climate change.
 
-2. Energy Impacts
+2. Resource Planning
      - Resource planning: Green energy sources like solar and wind are intermittent, meaning their energy production fluctuates based on weather conditions and time of day. Predicting their output helps grid operators and energy providers plan for periods of high and low energy production to ensure a stable and reliable energy supply.
      - Grid stability: Accurate predictions of green energy production enable grid operators to balance the supply and demand of electricity. This helps prevent blackouts and brownouts by ensuring that enough energy is available when needed.
      - Integration of renewables: As the share of renewable energy sources in the energy mix grows, it becomes crucial to integrate them efficiently into the existing energy infrastructure. Predictions of green energy production allow for better coordination with traditional power sources, reducing the need for backup fossil fuel generation and optimizing grid operations.
 
-3. Financial Impacts
+3. Financial Saving
     - Energy companies and investors need to make long-term decisions about infrastructure investments in renewable energy projects. Accurate predictions of green energy production help assess the viability and profitability of such projects.
     - Accurate predictions help energy providers avoid overcommitting or underutilizing resources. This can lead to cost savings by reducing the need for expensive peaker plants and minimizing energy wastage during periods of oversupply.
-      
-4. Technology Impacts
-    - Technological Innovation: Our project represents a promising step towards harnessing emerging technologies, particularly AI, to combat climate change. We demonstrate a feasible concept, laying the groundwork for future technological advancements in the field of renewable energy integration.
 
-5. Impact on Policies and Regulation
+4. Policies and Regulation
    - Governments and regulatory bodies use production forecasts to develop policies and regulations that promote the growth of renewable energy. Predictions provide essential data for setting renewable energy targets, incentivizing investments, and monitoring progress.
   
 
