@@ -33,15 +33,20 @@ What impacts can predicting solar energy production have?
    - Climate Justice: By providing accurate solar energy forecasts, we empower Boston's diverse communities to make informed decisions about their energy consumption. This not only reduces their reliance on fossil fuels but also contributes to a more equitable and sustainable energy landscape.
    - Climate Resilience: The integration of GraphCast's advanced weather predictions, although currently beyond our technical scope, holds immense potential for early warnings of extreme weather events. This capability directly contributes to Boston's climate resilience efforts, safeguarding communities from the impacts of climate change.
 
-2. Financial Impacts
-   - Accurate predictions of green energy production enable grid operators to balance the supply and demand of electricity. This helps prevent blackouts and brownouts by ensuring that enough energy is available when needed. The prevention of blackouts and brownouts protects businesses from losing financial gains from either having to alter their hours of operation or losing server data.
+2. Energy Impacts
+     - Resource planning: Green energy sources like solar and wind are intermittent, meaning their energy production fluctuates based on weather conditions and time of day. Predicting their output helps grid operators and energy providers plan for periods of high and low energy production to ensure a stable and reliable energy supply.
+     - Grid stability: Accurate predictions of green energy production enable grid operators to balance the supply and demand of electricity. This helps prevent blackouts and brownouts by ensuring that enough energy is available when needed.
+     - Integration of renewables: As the share of renewable energy sources in the energy mix grows, it becomes crucial to integrate them efficiently into the existing energy infrastructure. Predictions of green energy production allow for better coordination with traditional power sources, reducing the need for backup fossil fuel generation and optimizing grid operations.
+
+3. Financial Impacts
     - Energy companies and investors need to make long-term decisions about infrastructure investments in renewable energy projects. Accurate predictions of green energy production help assess the viability and profitability of such projects.
     - Accurate predictions help energy providers avoid overcommitting or underutilizing resources. This can lead to cost savings by reducing the need for expensive peaker plants and minimizing energy wastage during periods of oversupply.
-
-3. Technology Impacts
-    - Technological Innovation: Our project represents a promising step towards harnessing emerging technologies, particularly AI, to combat climate change. We demonstrate a feasible concept, laying the groundwork for future technological advancements in the field of renewable energy integration.
       
-4. Impact on Policies and Regulation
+4. Technology Impacts
+    - Technological Innovation: Our project represents a promising step towards harnessing emerging technologies, particularly AI, to combat climate change. We demonstrate a feasible concept, laying the groundwork for future technological advancements in the field of renewable energy integration.
+
+5. Impact on Policies and Regulation
    - Governments and regulatory bodies use production forecasts to develop policies and regulations that promote the growth of renewable energy. Predictions provide essential data for setting renewable energy targets, incentivizing investments, and monitoring progress.
+  
 
 In summary, our project goes beyond technical innovation; it offers a tangible solution that addresses climate challenges, enhances climate justice, and fosters climate resilience. Our commitment to accurate solar energy forecasting, informed decision-making, and cutting-edge technology reflects our dedication to preparing Boston for the impacts of climate change and achieving a more sustainable future.
