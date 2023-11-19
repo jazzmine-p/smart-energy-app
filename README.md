@@ -3,6 +3,7 @@ A BostonHacks 2023 project by Grace Desroches, Sarah Cadet, Jasmine Pham, and Vi
 
 ## Project Description
 Problem: Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. 
+
 Solution: Solar Wise Energy Forecast is a machine learning powered algorithm that forecasts solar energy production based on up-to-date weather conditions.  Accurate green energy forecasting can help energy grid operators efficiently manage the integration of renewable energy sources, reduce reliance on fossil fuels, and minimize energy waste. The program could contribute to a more sustainable energy ecosystem and reduce greenhouse gas emissions. 
 
 ## Our Approach
