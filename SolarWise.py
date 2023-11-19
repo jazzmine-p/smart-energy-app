@@ -54,7 +54,8 @@ def graph():
 
 
 def predict(vs_test):
-    df = pd.read_csv("joined-weather-solar.csv")                                                # read training data
+    # read training data
+    df = pd.read_csv("joined-weather-solar.csv")
     df = df.drop(columns=['Date','Station pressure', 'Unnamed: 0', 'Altimeter'])
     df = df.rename(columns={'Temperature':'temp',
                             'Dew point':'dew',
