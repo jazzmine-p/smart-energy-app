@@ -2,9 +2,14 @@
 A BostonHacks 2023 project by Grace Desroches, Sarah Cadet, Jasmine Pham, and Vijay Fisch
 
 ## Project Description
-Problem: Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. 
+1. Problem: Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. Some challenges associated with solar energy prediction include:
+    - Weather Forecasting Accuracy: Accurate solar energy predictions rely on precise weather forecasts. However, weather predictions, especially for longer time horizons, can have uncertainties. Small errors in weather forecasts can lead to significant discrepancies in solar energy production predictions.
+    - Data Availability and Quality: Reliable historical weather data and solar energy production data are essential for training accurate prediction models. Data gaps or inaccuracies can lead to less reliable predictions.
+    - Limited Forecasting Horizon: Weather forecasts typically provide predictions for a few days in advance. Accurate long-term predictions are more challenging to obtain, which can limit the ability to plan for future solar energy production accurately.
+    - Grid Integration and Demand Fluctuations: Accurate predictions are crucial for grid operators to manage the integration of solar power into the electricity grid. Fluctuations in energy demand and supply must be balanced in real-time, which requires precise forecasts.
+    - Geographic Variability: Solar energy potential varies significantly by geographic location. Accurate predictions require taking into account the specific conditions and solar resources of each region.
 
-Solution: Solar Wise Energy Forecast is a machine learning powered algorithm that forecasts solar energy production based on up-to-date weather conditions.  Accurate green energy forecasting can help energy grid operators efficiently manage the integration of renewable energy sources, reduce reliance on fossil fuels, and minimize energy waste. The program could contribute to a more sustainable energy ecosystem and reduce greenhouse gas emissions. 
+2. Solution: Solar Wise Energy Forecast is a machine learning powered algorithm that forecasts solar energy production based on up-to-date weather conditions.  Accurate green energy forecasting can help energy grid operators efficiently manage the integration of renewable energy sources, reduce reliance on fossil fuels, and minimize energy waste. The program could contribute to a more sustainable energy ecosystem and reduce greenhouse gas emissions. 
 
 ## Our Approach
 1. Data Collection

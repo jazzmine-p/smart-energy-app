@@ -6,15 +6,16 @@ import urllib.request
 import sys
 
 import pandas as pd
+from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.ensemble import AdaBoostRegressor
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import AdaBoostRegressor
 from sklearn.tree import DecisionTreeRegressor
 
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-# page config and header
 st.set_page_config(page_title='SolarWise', page_icon='Solar Wise Logo.png', layout='wide')
 col1, col2 = st.columns([0.1, 0.9], gap="small")
 col1.image('Solar Wise Logo.png', use_column_width=True)
@@ -25,6 +26,8 @@ col2.markdown('Enter your location for a 15 day solar panel production forecast'
 forecast = []
 
 def gen_link(loc):
+    #with open('apikey.txt', 'r') as file:   # get api key
+    #    apikey = file.read().rstrip()
     apikey = st.secrets["apikey"]
 
     apilink1 = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'
@@ -32,12 +35,12 @@ def gen_link(loc):
 
     loc = loc.replace(' ', '%20')
 
-    return apilink1 + loc + apilink2    # concatenate forecast api call link
+    return apilink1 + loc + apilink2    # concatenate link
 
 def gen_data(link):
     try:         
-        forecast = pd.read_csv(urllib.request.urlopen(link))        # parse api return into forecasts data format       
-    except urllib.error.HTTPError as e:                             # check for errors in url fetch
+        forecast = pd.read_csv(urllib.request.urlopen(link))       # parse api return into forecasts data format       
+    except urllib.error.HTTPError as e:                         # check for errors in url fetch
         ErrorInfo= e.read().decode() 
         st.write('Error code: ', e.code, ErrorInfo)
         sys.exit()
@@ -47,15 +50,19 @@ def gen_data(link):
         sys.exit()
 
     st.write('Solar energy production data for ' + '**' + forecast['name'][1]+ '**' + ':')     # write city name at top of page
+    # st.write(forecast.loc[:, 'datetime':])
     return forecast
 
 def graph():
-    col2.area_chart(forecast, x='Date', y='Predicted Solar Output (kW/hr)', color=(66, 127, 19, 150), height=562)   # graph results
+    col2.area_chart(forecast, x='Date', y='Predicted Solar Output (kW/hr)', color=(66, 127, 19, 150), height=562)
 
 
 def predict(vs_test):
-    # read training data
     df = pd.read_csv("joined-weather-solar.csv")
+    #df['Date'] = pd.to_datetime(df['Date'])
+    #df['year'] = df['Date'].dt.year
+    #df['month'] = df['Date'].dt.month
+    #df['day'] = df['Date'].dt.month
     df = df.drop(columns=['Date','Station pressure', 'Unnamed: 0', 'Altimeter'])
     df = df.rename(columns={'Temperature':'temp',
                             'Dew point':'dew',
@@ -70,21 +77,29 @@ def predict(vs_test):
     # Splitting the dfset into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=37)
 
-    vs_test_df = vs_test    # for later use
+    # Normalizing the df
+    # scaler = MinMaxScaler(feature_range=(0, 1))
+    # X_train = scaler.fit_transform(X_train)
+    #X_test = scaler.transform(X_test)
+
+    vs_test_df = vs_test
 
     # Preprocess the data
     vs_test['Date'] = pd.to_datetime(vs_test['datetime'])
+    #vs_test['year'] = vs_test['Date'].dt.year
+    #vs_test['month'] = vs_test['Date'].dt.month
+    #vs_test['day'] = vs_test['Date'].dt.day
     vs_test = vs_test.drop(columns=['Date', 'name'])
 
     # Reorder column and MinMaxScaler
     vs_test = vs_test[['cloudcover', 'visibility', 'temp', 'dew', 'humidity', 'windspeed',
         'solarenergy']]
+    # vs_test = scaler.transform(vs_test)
 
     # Predict using AdaBoosting based on DecisionTreeRegressor base tree
     base_tree = DecisionTreeRegressor(max_depth=5, random_state=37)
     base_tree.fit(X_train, y_train)
     
-    # run adaboost
     final_ada = AdaBoostRegressor(base_estimator=base_tree, 
                                 learning_rate=0.5, 
                                 n_estimators=150,
@@ -94,16 +109,16 @@ def predict(vs_test):
     # Final prediction
     vs_pred = result.predict(vs_test)
 
-    vs_test_df = vs_test_df.join(pd.DataFrame(data=vs_pred, columns=['Predicted Solar Output (kW/hr)']))                                    # merge results into table
-    col1.dataframe(vs_test_df.loc[:, ['Date', 'Predicted Solar Output (kW/hr)']], use_container_width=True, hide_index=True, height=562)    # display table
+    vs_test_df = vs_test_df.join(pd.DataFrame(data=vs_pred, columns=['Predicted Solar Output (kW/hr)']))
+    col1.dataframe(vs_test_df.loc[:, ['Date', 'Predicted Solar Output (kW/hr)']], use_container_width=True, hide_index=True, height=562)
 
     return vs_test_df
   
-# main process
-loc = st.text_input('Location')                         # get location from user
+
+loc = st.text_input('Location')         # get location from user
 if loc != '':
-    link = gen_link(loc)                                # generate api link
-    forecast = gen_data(link)                           # gather forecast data
-    col1, col2 = st.columns([0.3, 0.7], gap="small")    # format page
-    forecast = predict(forecast)                        # predict output
-    graph()                                             # graph prediction
+    link = gen_link(loc)
+    forecast = gen_data(link)
+    col1, col2 = st.columns([0.3, 0.7], gap="small")
+    forecast = predict(forecast)
+    graph()
