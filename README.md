@@ -1,5 +1,8 @@
 # SolarWise Energy Forecast
-A BostonHacks 2023 project by Grace Desroches, Sarah Cadet, Jasmine Pham, and Vijay Fisch
+A BostonHacks 2023 project by Jasmine Pham, Grace Desroches, Sarah Cadet, and Vijay Fisch
+[DevPost](https://devpost.com/software/solar-wise-energy-forecast)
+[Energy Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMjkxYzUxMmYtNGRmZi00MzI4LTgzNDItOGYzMWJhZjZkN2UzIiwidCI6ImQ1N2QzMmNjLWMxMjEtNDg4Zi1iMDdiLWRmZTcwNTY4MGM3MSIsImMiOjN9)
+[Streamlit App](http://solarwise.biz/)
 
 ## Project Description
 1. Problem: Renewable energy sources like solar panels are highly dependent on weather conditions, making their energy output variable and challenging to predict accurately. This variability can strain energy grids and affect the stability of power supply. Some challenges associated with solar energy prediction include:
