@@ -1,5 +1,6 @@
 # SolarWise Energy Forecast
-A BostonHacks 2023 project by Jasmine Pham, Grace Desroches, Sarah Cadet, and Vijay Fisch
+A [Major League Hacking](https://mlh.io/) x [BostonHacks](https://www.bostonhacks.org/) 2023 project by Jasmine Pham, Grace Desroches, Sarah Cadet, and Vijay Fisch. We won the Tech Solution to Climate Change over 159 participants.
+
 [DevPost](https://devpost.com/software/solar-wise-energy-forecast)
 [Energy Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMjkxYzUxMmYtNGRmZi00MzI4LTgzNDItOGYzMWJhZjZkN2UzIiwidCI6ImQ1N2QzMmNjLWMxMjEtNDg4Zi1iMDdiLWRmZTcwNTY4MGM3MSIsImMiOjN9)
 [Streamlit App](http://solarwise.biz/)
